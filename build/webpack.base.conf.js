@@ -6,7 +6,9 @@ const fs = require('fs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+require("@babel/core").transform("code", {
+  plugins: ["@babel/plugin-proposal-export-default-from"]
+});
 // Main const
 const PATHS = {
   src: path.join(__dirname, '../src'),

@@ -1,4 +1,4 @@
-import header from '../components/Header/header.html';
+import header from '../components/Header/';
 import '../components/Header/header.scss'
 
 window.onload = function() {
