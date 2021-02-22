@@ -1,0 +1,34 @@
+@import 'src/assets/scss/utils/vars';
+
+.weather-main{
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+              "city city"
+              "icon degree";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  &__city{
+    grid-area: city;
+    font-size: 2em;
+  }
+
+  &__icon{
+    grid-area: icon;
+    &-stub{
+      display: flex;
+      text-align: center;
+      align-items: center;
+      height: 100px;
+      width: 100px;
+      border: solid, $secondary-color;
+    }
+  }
+
+  &__degree{
+    grid-area: degree;
+    text-align: end;
+    font-size: 5em;
+  }
+}

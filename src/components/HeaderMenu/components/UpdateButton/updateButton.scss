@@ -1,16 +1,18 @@
 @import 'src/assets/scss/utils/vars';
 
-.update-button__container
+.update-button
 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   width: 100%;
   grid-column: 2;
+
+  &__button{
+    background: $secondary-color;
+    border-radius: 5px;
+    height: 40px;
+  }
 }
 
-.update-button__button{
-  background: $secondary-color;
-  border-radius: 5px;
-  height: 40px;
-}
+
