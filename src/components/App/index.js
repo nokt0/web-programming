@@ -1,4 +1,4 @@
-import './appGrid.scss';
+import './app.scss';
 export App from './App.html';
 
 export const headerRoot = 'app-header';

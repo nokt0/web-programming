@@ -1,0 +1,23 @@
+.city-card-header{
+  display: grid;
+  grid-template-areas: "header header degree icon . close";
+  grid-template-columns: repeat(6,1fr);
+
+  &__header{
+    grid-area: header;
+    font-size: 1.2em;
+  }
+
+  &__degree{
+    grid-area: degree;
+    font-size: 1.2em;
+  }
+
+  &__icon{
+    grid-area: icon;
+  }
+
+  &__close{
+    grid-area: close;
+  }
+}

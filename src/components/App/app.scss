@@ -1,0 +1,20 @@
+.app-grid{
+  display: grid;
+  grid-template-rows: 30vh 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 40px;
+  width: 100vw;
+  padding: 0 40px;
+}
+
+.app-header{
+  min-height: 30vh;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+
+.app-body{
+  min-height: 70vh;
+  grid-row: 2 / 2;
+  grid-column: 1 / 1;
+}

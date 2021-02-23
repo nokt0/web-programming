@@ -1,0 +1,14 @@
+.city-card{
+  grid-template-areas:
+          "city-card-header"
+          "city-card-data";
+  grid-template-rows: 20% 1fr;
+
+  &__header{
+    grid-area: city-card-header;
+  }
+
+  &__data{
+    grid-area: city-card-data;
+  }
+}
