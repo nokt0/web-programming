@@ -12,7 +12,7 @@ require("@babel/core").transform("code", {
 // Main const
 const PATHS = {
   src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../dist'),
+  dist: path.join(__dirname, '../docs'),
   assets: 'assets/'
 }
 
