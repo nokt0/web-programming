@@ -8,7 +8,7 @@ export HeaderMenu from './headerMenu.html';
 export function initializeHeaderMenu(){
     document.getElementById('header-menu-top').insertAdjacentHTML("beforeend", UpdateButton);
     document.getElementById('header-menu-weather-main').innerHTML= WeatherMain;
-    const weatherDetailed = createWeatherDetailed(headerMenuData);
+    const weatherDetailed = createWeatherDetailed('header-menu', headerMenuData);
     if(weatherDetailed){
         document.getElementById('header-menu-weather-detailed').appendChild(weatherDetailed);
     }
