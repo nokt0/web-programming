@@ -24,7 +24,7 @@ export function createCityCardHeader(id, {city,degree}){
     cityCardHeaderDegree.innerText = `${degree}°C`;
 
     cityCardHeader.id = `${cityCardHeaderId}-${id}`;
-    cityCardHeaderCity.id = `${cityCardHeaderCity}-${id}`;
+    cityCardHeaderCity.id = `${cityCardHeaderCityId}-${id}`;
     cityCardHeaderDegree.id = `${cityCardHeaderDegreeId}-${id}`;
     cityCardHeaderIcon.id = `${cityCardHeaderIconId}-${id}`;
     cityCardHeaderClose.id = `${cityCardHeaderCloseId}-${id}`;

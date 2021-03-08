@@ -1,25 +1,41 @@
+@import "src/assets/scss/utils/vars";
+
 .city-card-header{
   display: grid;
   grid-template-areas: "header header degree icon . close";
   grid-template-columns: repeat(6,1fr);
 
   &__header{
+    display: flex;
+    align-items: center;
     grid-area: header;
     font-size: 1.5em;
   }
 
   &__degree{
+    display: flex;
+    align-items: center;
     grid-area: degree;
     font-size: 1.5em;
   }
 
   &__icon{
     grid-area: icon;
+    &-stub{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border: solid $neutral-placeholder;
+      font-size: 0.7em;
+    }
   }
 
   &__close{
     grid-area: close;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
   }
 }
