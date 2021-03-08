@@ -1,10 +1,15 @@
+@import "src/assets/scss/utils/vars";
+
 .app-grid{
   display: grid;
   grid-template-rows: minmax(30vh, auto) 1fr;
   grid-template-columns: 1fr;
+  width: 100%;
   grid-gap: 40px;
-  width: 100vw;
   padding: 0 40px;
+  @media screen and (max-width: $tableWidth){
+    padding: 0 20px;
+  }
 }
 
 .app-header{
