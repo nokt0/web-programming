@@ -9,6 +9,10 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
 
+  @media screen and (max-width: $tableWidth){
+    grid-template-rows: 40% 1fr;
+  }
+
   &__city{
     grid-area: city;
     font-size: 2em;
