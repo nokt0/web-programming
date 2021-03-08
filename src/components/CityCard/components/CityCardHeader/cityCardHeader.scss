@@ -5,12 +5,12 @@
 
   &__header{
     grid-area: header;
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   &__degree{
     grid-area: degree;
-    font-size: 1.2em;
+    font-size: 1.5em;
   }
 
   &__icon{
@@ -19,5 +19,7 @@
 
   &__close{
     grid-area: close;
+    display: flex;
+    justify-content: flex-end;
   }
 }

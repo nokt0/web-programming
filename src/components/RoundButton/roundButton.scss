@@ -1,0 +1,9 @@
+@import "src/assets/scss/utils/vars";
+
+.round-button {
+  background: $primary-darker-color;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
