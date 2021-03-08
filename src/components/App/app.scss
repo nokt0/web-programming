@@ -1,6 +1,6 @@
 .app-grid{
   display: grid;
-  grid-template-rows: 30vh 1fr;
+  grid-template-rows: minmax(30vh, auto) 1fr;
   grid-template-columns: 1fr;
   grid-gap: 40px;
   width: 100vw;
