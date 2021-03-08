@@ -24,6 +24,7 @@
     }
     @media screen and (max-width: $tableWidth){
       grid-column-gap: 50px;
+      grid-template-columns: 1fr;
     }
   }
 }

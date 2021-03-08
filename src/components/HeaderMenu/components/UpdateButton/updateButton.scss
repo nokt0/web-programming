@@ -7,11 +7,27 @@
   align-items: flex-end;
   width: 100%;
   grid-column: 2;
+  @media screen and (max-width: $tableWidth){
+    align-items: center;
+    justify-content: flex-start;
+  }
 
   &__button{
     background: $secondary-color;
     border-radius: 5px;
     height: 40px;
+    &-text{
+      @media screen and (max-width: $tableWidth){
+        display: none;
+      }
+    }
+    &-icon{
+      height: 40px;
+      display: none;
+      @media screen and (max-width: $tableWidth){
+        display: block;
+      }
+    }
   }
 }
 
