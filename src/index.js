@@ -1,5 +1,5 @@
 // JS
-import './js/index.js'
+import './js/initialize.js'
 
 // SCSS
 import './assets/scss/main.scss'

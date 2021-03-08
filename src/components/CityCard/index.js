@@ -1,18 +1,24 @@
 import './cityCard.scss';
-import cityCard from 'cityCard.html';
+import CityCard from './cityCard.html';
+import {createCityCardHeader} from './components/CityCardHeader';
 import {createWeatherDetailed} from "../WeatherDetailed";
 
-export function createCityCard(id, weatherDetails){
+export function createCityCard(id, {weatherDetails, city, degree}){
     if(!id || !weatherDetails){
         return null;
     }
 
-    const card = new DOMParser().parseFromString(cityCard, 'text/html');
+    const card = new DOMParser().parseFromString(CityCard, 'text/html');
+    const cityCard = card.getElementById('city-card');
     const cityCardData = card.getElementById('city-card-data');
-    card.id += `-${id}`;
+    cityCard.id += `-${id}`;
     cityCardData.id = `-${id}`;
-    const weatherDetailed = createWeatherDetailed(id,weatherDetails);
+    const weatherDetailed = createWeatherDetailed(id, weatherDetails);
     cityCardData.appendChild(weatherDetailed);
 
-    return card;
+    const cityCardHeader = card.getElementById('city-card-header');
+    const createdHeader = createCityCardHeader(id,{city,degree});
+    cityCardHeader.appendChild(createdHeader);
+
+    return cityCard;
 }
