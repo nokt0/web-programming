@@ -6,6 +6,10 @@
   align-items: center;
   height: 100%;
 
+  @media screen and (max-width: $tableWidth) {
+    grid-template-columns: 1fr;
+  }
+
   &__header{
     grid-column: 1 / 1;
     font-size: 1.5em;
@@ -15,6 +19,11 @@
     grid-column: 3 / 3 ;
     display: flex;
     justify-content: flex-end;
+
+    @media screen and (max-width: $tableWidth) {
+      grid-column: 1 / 1;
+    }
+
     input {
       background: #DCDFE6;
       padding: 10px;
