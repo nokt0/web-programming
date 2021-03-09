@@ -4,6 +4,8 @@
 
 @import 'mixins';
 
+@include font-face("Times New Roman", "/src/assets/fonts/TimesNewRoman/times-new-roman-cyr");
+
 /*
   One of the ways:
   1. handle method,

@@ -8,6 +8,8 @@
   &__top {
     margin-bottom: 20px;
     display: grid;
+    font-family: $secondary-font;
+    color: $secondary-font-color;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 1fr;
     width: 100%;
