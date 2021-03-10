@@ -3,7 +3,7 @@ import CityCard from './cityCard.html';
 import {createCityCardHeader} from './components/CityCardHeader';
 import {createWeatherDetailed} from "../WeatherDetailed";
 
-export function createCityCard(id, {weatherDetails, city, degree}){
+export function createCityCard(id, {weatherDetails,weatherType, city, degree}){
     if(!id || !weatherDetails){
         return null;
     }
@@ -17,7 +17,7 @@ export function createCityCard(id, {weatherDetails, city, degree}){
     cityCardData.appendChild(weatherDetailed);
 
     const cityCardHeader = card.getElementById('city-card-header');
-    const createdHeader = createCityCardHeader(id,{city,degree});
+    const createdHeader = createCityCardHeader(id,{weatherType,city,degree});
     cityCardHeader.appendChild(createdHeader);
 
     return cityCard;

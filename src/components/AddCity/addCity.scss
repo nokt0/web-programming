@@ -8,6 +8,7 @@
 
   @media screen and (max-width: $tableWidth) {
     grid-template-columns: 1fr;
+    grid-row-gap: 10px;
   }
 
   &__header{

@@ -1,7 +1,10 @@
+import {WeatherTypes} from "../../components/WeatherIcon/WeatherIcon.model";
+
 export const favoriteCitiesData = [
     {
         city: 'Moscow',
         degree: 5,
+        weatherType: WeatherTypes.Rainy,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},
@@ -13,6 +16,7 @@ export const favoriteCitiesData = [
     {
         city: 'Helsinki',
         degree: 3,
+        weatherType: WeatherTypes.Storm,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},
@@ -24,6 +28,7 @@ export const favoriteCitiesData = [
     {
         city: 'Moscow',
         degree: 5,
+        weatherType: WeatherTypes.Cloudy,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},
@@ -35,6 +40,7 @@ export const favoriteCitiesData = [
     {
         city: 'Helsinki',
         degree: 3,
+        weatherType: WeatherTypes.Storm,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},
@@ -46,6 +52,7 @@ export const favoriteCitiesData = [
     {
         city: 'Moscow',
         degree: 5,
+        weatherType: WeatherTypes.Storm,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},
@@ -57,6 +64,7 @@ export const favoriteCitiesData = [
     {
         city: 'Helsinki',
         degree: 3,
+        weatherType: WeatherTypes.Cloudy,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},

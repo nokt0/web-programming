@@ -1,6 +1,7 @@
 import './cityCardHeader.scss';
 import CityCardHeader from './cityCardHeader.html';
 import {createRoundButton} from "../../../RoundButton";
+import {createWeatherIcon} from "../../../WeatherIcon";
 
 const cityCardHeaderId = 'city-card-header';
 const cityCardHeaderCityId = `${cityCardHeaderId}-city`;
@@ -9,13 +10,18 @@ const cityCardHeaderIconId = `${cityCardHeaderId}-icon`;
 const cityCardHeaderCloseId = `${cityCardHeaderId}-close`;
 const buttonText = '✕';
 
-export function createCityCardHeader(id, {city,degree}){
+export function createCityCardHeader(id, {weatherType, city, degree}) {
     const cardHeaderHtml = new DOMParser().parseFromString(CityCardHeader, 'text/html');
     const cityCardHeader = cardHeaderHtml.getElementById(cityCardHeaderId);
     const cityCardHeaderCity = cardHeaderHtml.getElementById(cityCardHeaderCityId);
     const cityCardHeaderDegree = cardHeaderHtml.getElementById(cityCardHeaderDegreeId);
     const cityCardHeaderIcon = cardHeaderHtml.getElementById(cityCardHeaderIconId);
     const cityCardHeaderClose = cardHeaderHtml.getElementById(cityCardHeaderCloseId);
+
+    const weatherIcon = createWeatherIcon(id,weatherType);
+    if(weatherIcon){
+        cityCardHeaderIcon.appendChild(weatherIcon);
+    }
 
     const deleteButton = createRoundButton(buttonText);
     cityCardHeaderClose.appendChild(deleteButton);

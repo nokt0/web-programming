@@ -1,4 +1,5 @@
 @import "src/assets/scss/utils/vars";
+@import "src/assets/scss/utils/mixins";
 
 .city-card-header{
   display: grid;
@@ -6,11 +7,16 @@
   grid-column-gap: 10px;
   grid-template-columns: repeat(6,minmax(20px, 1fr));
 
+  @media screen and (max-width: $phoneWidth){
+    grid-template-areas: "header header degree icon close close";
+  }
+
   &__header{
     display: flex;
     align-items: center;
     grid-area: header;
     font-size: 1.5rem;
+    font-weight: bold;
   }
 
   &__degree{
@@ -26,15 +32,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &-stub{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50px;
-      height: 50px;
-      border: solid $neutral-placeholder;
-      font-size: 0.7rem;
-    }
+    @include size(40px);
+
   }
 
   &__close{

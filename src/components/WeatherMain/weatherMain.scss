@@ -13,6 +13,9 @@
   &__city{
     grid-area: city;
     font-size: 2rem;
+    h2{
+      font-weight: bold;
+    }
   }
 
   &__icon{

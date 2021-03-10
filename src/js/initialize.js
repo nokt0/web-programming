@@ -1,6 +1,6 @@
 import {HeaderMenu, initializeHeaderMenu} from '../components/HeaderMenu/';
-import {FavoriteCities, initializeFavoriteCities} from '../components/FavoriteCities';
-import {App, headerRoot, bodyRoot} from '../components/App';
+import {FavoriteCities, initializeFavoriteCities} from '../containers/FavoriteCities';
+import {App, headerRoot, bodyRoot} from '../containers/App';
 import '../components/HeaderMenu/headerMenu.scss'
 
 window.onload = function() {

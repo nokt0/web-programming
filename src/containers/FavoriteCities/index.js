@@ -1,7 +1,7 @@
 import './favoriteCities.scss';
 import {favoriteCitiesData} from './favoriteCities.data';
-import {AddCity} from '../AddCity'
-import {createCityCard} from "../CityCard";
+import {AddCity} from '../../components/AddCity'
+import {createCityCard} from "../../components/CityCard";
 export FavoriteCities from './favoriteCities.html';
 
 
