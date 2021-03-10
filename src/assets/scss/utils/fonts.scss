@@ -4,7 +4,9 @@
 
 @import 'mixins';
 
-@include font-face("Times New Roman", "/src/assets/fonts/TimesNewRoman/times-new-roman-cyr");
+@include font-face("Bebas Neue", "/src/assets/fonts/Bebas/BebasNeueRegular");
+@include font-face("Open Sans", "/src/assets/fonts/OpenSans/OpenSans-SemiBold",600);
+@include font-face("Open Sans", "/src/assets/fonts/OpenSans/OpenSans-Regular");
 
 /*
   One of the ways:
