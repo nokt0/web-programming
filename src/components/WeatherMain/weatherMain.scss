@@ -12,24 +12,31 @@
 
   &__city{
     grid-area: city;
-    font-size: 2em;
+    font-size: 2rem;
   }
 
   &__icon{
     grid-area: icon;
-    &-stub{
-      display: flex;
-      text-align: center;
+    height: 200px;
+    width: 200px;
+
+    @media screen and (max-width: $smDesktopWidth){
       align-items: center;
-      height: 130px;
-      width: 130px;
-      border: solid, $secondary-color;
+      height: 150px;
+      width: 150px;
     }
+
+    @media screen and (max-width: $phoneWidth){
+      align-items: center;
+      height: 110px;
+      width: 110px;
+    }
+
   }
 
   &__degree{
     grid-area: degree;
     text-align: end;
-    font-size: 6em;
+    font-size: 6rem;
   }
 }
