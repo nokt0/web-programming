@@ -4,6 +4,8 @@ import {initializeHeaderMenu} from "../components/HeaderMenu";
 import {WeatherTypes} from "../components/WeatherIcon/WeatherIcon.model";
 
 const waitingString = 'Подождите, данные загружаются';
+const citiesStorageKey = 'app-cities-data'
+const citiesState = window.localStorage.getItem(citiesStorageKey);
 
 function setCurrentGeolocationWeatherUpdating(){
     initializeHeaderMenu({weatherType: WeatherTypes.Update, city: waitingString});
