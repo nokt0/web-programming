@@ -1,5 +1,6 @@
 
 export const WeatherTypes = {
+    Update: 'Update',
     Clouds: 'Clouds',
     Drizzle: 'Drizzle',
     Snow: 'Snow',
@@ -20,6 +21,7 @@ export const WeatherTypes = {
 const fogIcon = './assets/img/017-foog.svg'
 
 export const WeatherIcons = {
+    [WeatherTypes.Update]: './assets/img/update-arrows.svg',
     [WeatherTypes.Clouds]: './assets/img/001-cloud.svg',
     [WeatherTypes.Drizzle]: './assets/img/003-rainy.svg',
     [WeatherTypes.Thunderstorm]: './assets/img/036-storm-4.svg',

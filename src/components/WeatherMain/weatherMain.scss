@@ -8,7 +8,8 @@
               "icon degree";
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 40% 1fr;
-
+  transition-duration: 1s;
+  transition-timing-function: linear;
 
   &__city{
     grid-area: city;
@@ -34,7 +35,6 @@
       height: 110px;
       width: 110px;
     }
-
   }
 
   &__degree{
@@ -42,4 +42,48 @@
     text-align: end;
     font-size: 6rem;
   }
+}
+
+.weather-main.updating{
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+              "city city city"
+              ". icon .";
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: 10px;
+  grid-template-rows: 40% 1fr;
+
+  .weather-main__icon{
+    grid-area: icon;
+    height: 120px;
+    width: 120px;
+    animation: 1s linear 0s normal none infinite running rot;
+    -webkit-animation: 1s linear 0s normal none infinite running rot;
+
+    @media screen and (max-width: $smDesktopWidth){
+      align-items: center;
+      height: 80px;
+      width: 80px;
+    }
+
+    @keyframes rot {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @-webkit-keyframes rot {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+  }
+}
+
+
 }
