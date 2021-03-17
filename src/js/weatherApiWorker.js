@@ -8,10 +8,9 @@ function getCurrentLocation() {
     return new Promise((resolve, reject) => {
         geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {
             resolve({latitude, longitude});
-            console.log({latitude, longitude});
         },
             (err) => {
-            console.log(err);
+            console.error(err);
             reject(err);
         });
     })

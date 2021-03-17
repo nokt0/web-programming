@@ -13,9 +13,7 @@ window.onload = async function () {
 
     try{
         const weather = await requestWeatherForCurrentLocation();
-        console.log(weather);
         const headerMenuData = weatherToCardController(weather);
-        console.log(headerMenuData);
         initializeHeaderMenu(headerMenuData);
     }catch (e){
         console.log(e);

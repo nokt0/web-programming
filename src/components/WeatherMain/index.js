@@ -8,8 +8,6 @@ export function initializeWeatherMain({weatherType, degree, city}){
     const weatherDegree = document.getElementById('weather-main-degree');
     const weatherCity = document.getElementById('weather-main-city');
 
-
-    console.log(degree)
     const icon = createWeatherIcon('header-menu',weatherType);
     if(icon){
         iconContainer.appendChild(icon)
