@@ -1,16 +1,17 @@
 import './headerMenu.scss';
 import {UpdateButton} from './components/UpdateButton';
 import {initializeWeatherMain, WeatherMain} from '../WeatherMain';
-import {WeatherTypes} from "../WeatherIcon/WeatherIcon.model";
 import {createWeatherDetailed} from '../WeatherDetailed';
-import {headerMenuData} from "./HeaderMenu.data";
 export HeaderMenu from './headerMenu.html';
 
-export function initializeHeaderMenu(){
+export function initializeHeaderMenu({weatherDetails, ...headerData}){
     document.getElementById('header-menu-top').insertAdjacentHTML("beforeend", UpdateButton);
     document.getElementById('header-menu-weather-main').innerHTML= WeatherMain;
-    initializeWeatherMain({weatherType: WeatherTypes.Cloudy});
-    const weatherDetailed = createWeatherDetailed('header-menu', headerMenuData);
+    initializeWeatherMain(headerData);
+
+    const weatherDetailed = createWeatherDetailed('header-menu', weatherDetails);
+
+
     if(weatherDetailed){
         document.getElementById('header-menu-weather-detailed').appendChild(weatherDetailed);
     }

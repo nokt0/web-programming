@@ -28,7 +28,7 @@ export const favoriteCitiesData = [
     {
         city: 'Moscow',
         degree: 5,
-        weatherType: WeatherTypes.Cloudy,
+        weatherType: WeatherTypes.Clouds,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},
@@ -64,7 +64,7 @@ export const favoriteCitiesData = [
     {
         city: 'Helsinki',
         degree: 3,
-        weatherType: WeatherTypes.Cloudy,
+        weatherType: WeatherTypes.Clouds,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},

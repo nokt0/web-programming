@@ -11,16 +11,16 @@ window.onload = async function () {
     document.getElementById(headerRoot).innerHTML = HeaderMenu;
     document.getElementById(bodyRoot).innerHTML = FavoriteCities;
 
-    initializeHeaderMenu();
-    initializeFavoriteCities();
-
     try{
         const weather = await requestWeatherForCurrentLocation();
         console.log(weather);
-        console.log(weatherToCardController(weather));
+        const headerMenuData = weatherToCardController(weather);
+        console.log(headerMenuData);
+        initializeHeaderMenu(headerMenuData);
     }catch (e){
         console.log(e);
     }
 
 
+    initializeFavoriteCities();
 }
