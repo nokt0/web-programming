@@ -4,7 +4,7 @@ export const favoriteCitiesData = [
     {
         city: 'Moscow',
         degree: 5,
-        weatherType: WeatherTypes.Rainy,
+        weatherType: WeatherTypes.Drizzle,
         weatherDetails: [
             {title: 'Ветер', value: 'Moderate breeze, 6.0 m/s, North-northwest'},
             {title: 'Облачность', value: 'Broken clouds'},

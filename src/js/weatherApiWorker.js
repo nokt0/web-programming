@@ -12,7 +12,7 @@ function getCurrentLocation() {
             (err) => {
             console.error(err);
             reject(err);
-        });
+        }, {enableHighAccuracy: true});
     })
 }
 
