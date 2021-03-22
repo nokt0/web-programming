@@ -24,9 +24,9 @@ function requestWeather(latitude, longitude) {
 export async function requestWeatherForCurrentLocation(){
     let latitude,longitude;
     try{
-        location = await getCurrentLocation();
-        latitude = location.latitude;
-        longitude = location.longitude;
+        const coords = await getCurrentLocation();
+        latitude = coords.latitude;
+        longitude = coords.longitude;
     }catch (e){
         throw new Error('Cant get geolocation')
     }
