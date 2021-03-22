@@ -25,8 +25,8 @@ export async function requestWeatherForCurrentLocation(){
     let latitude,longitude;
     try{
         location = await getCurrentLocation();
-        latitude = geolocation.latitude;
-        longitude = geolocation.longitude;
+        latitude = location.latitude;
+        longitude = location.longitude;
     }catch (e){
         throw new Error('Cant get geolocation')
     }
