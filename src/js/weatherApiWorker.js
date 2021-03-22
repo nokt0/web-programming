@@ -1,7 +1,7 @@
 const API_KEY = 'b332962152d1ba0bb3f785794f1dc02d';
-const API_URL = 'http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru';
+const API_URL = `http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&appid=${API_KEY}`;
 
-const geolocation = navigator.geolocation;
+let geolocation = navigator.geolocation;
 
 
 function getCurrentLocation() {
@@ -17,11 +17,23 @@ function getCurrentLocation() {
 }
 
 function requestWeather(latitude, longitude) {
-    return fetch(`${API_URL}&lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+    return fetch(`${API_URL}&lat=${latitude}&lon=${longitude}`)
         .then(response => response.json());
 }
 
 export async function requestWeatherForCurrentLocation(){
-    const {latitude,longitude} = await getCurrentLocation();
+    let latitude,longitude;
+    try{
+        location = await getCurrentLocation();
+        latitude = geolocation.latitude;
+        longitude = geolocation.longitude;
+    }catch (e){
+        throw new Error('Cant get geolocation')
+    }
     return await requestWeather(latitude,longitude)
+}
+
+export async function requestWeatherForCity(city){
+    return fetch(`${API_URL}&q=${city}`)
+        .then(response => response.json());
 }
