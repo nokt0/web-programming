@@ -3,7 +3,6 @@ const API_URL = `http://api.openweathermap.org/data/2.5/weather?units=metric&lan
 
 let geolocation = navigator.geolocation;
 
-
 function getCurrentLocation() {
     return new Promise((resolve, reject) => {
         geolocation.getCurrentPosition(({coords: {latitude, longitude}}) => {

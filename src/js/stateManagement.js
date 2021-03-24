@@ -47,15 +47,23 @@ export function submitCityForm(event) {
 
 export async function addCityCard(city, onPosition){
     try{
+        const cardLoading = createCityCard(city, {isLoading: true,city});
+        console.log(cardLoading);
+        const cardsContainer = document.getElementById(favoriteCitiesContainerId);
+        cardsContainer.appendChild(cardLoading);
+
         const weather = await requestWeatherForCity(city);
         const cardData = weatherToCardController(weather);
         const card = createCityCard(city,cardData);
-        const cardsContainer = document.getElementById(favoriteCitiesContainerId);
+        cardsContainer.removeChild(cardLoading);
+        cardsContainer.appendChild(card);
+
         if(onPosition){
             cardsContainer.insertBefore(card, cardsContainer.children[onPosition]);
         }else{
             cardsContainer.appendChild(card);
         }
+
         console.log(cardData);
     }catch (e){
         console.log(e);

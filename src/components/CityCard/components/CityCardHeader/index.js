@@ -31,8 +31,12 @@ export function createCityCardHeader(id, {weatherType, city, degree}) {
     }
     cityCardHeaderClose.appendChild(deleteButton);
 
-    cityCardHeaderCity.innerText = city;
-    cityCardHeaderDegree.innerText = `${degree}°C`;
+    if(city){
+        cityCardHeaderCity.innerText = city;
+    }
+    if(degree){
+        cityCardHeaderDegree.innerText = `${degree}°C`;
+    }
 
     cityCardHeader.id = `${cityCardHeaderId}-${id}`;
     cityCardHeaderCity.id = `${cityCardHeaderCityId}-${id}`;
