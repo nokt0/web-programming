@@ -4,7 +4,7 @@ import {initializeHeaderMenu} from "../components/HeaderMenu";
 import {WeatherTypes} from "../components/WeatherIcon/WeatherIcon.model";
 import {createCityCard} from "../components/CityCard";
 import {favoriteCitiesContainerId} from "../containers/FavoriteCities";
-import {addCityToStorage, getCitiesState} from "./LocalStorage";
+import {addCityToStorage, deleteCityFromStorage, getCitiesState} from "./LocalStorage";
 
 const waitingString = 'Подождите, данные загружаются';
 
@@ -25,6 +25,7 @@ export async function updateCurrentGeolocationWeather(defaultCity){
 
     }catch (e){
         console.log(e);
+        alert('Пожалуйста, разрешите доступ к геолокации');
         if(defaultCity){
             weather = await requestWeatherForCity(defaultCity);
             if(weather){
@@ -40,33 +41,37 @@ export function submitCityForm(event) {
     const formData = new FormData(event.target);
     const inputCity = formData.get('city');
     if(inputCity){
-        addCityToStorage(inputCity);
+        try{
+            addCityToStorage(inputCity);
+        }catch (e){
+            alert('Город уже добавлен в избранное');
+        }
     }
     event?.target?.reset();
 }
 
 export async function addCityCard(city, onPosition){
+    const cardsContainer = document.getElementById(favoriteCitiesContainerId);
+    const cardLoading = createCityCard(city, {isLoading: true,city});
+    cardsContainer.appendChild(cardLoading);
+
     try{
-        const cardLoading = createCityCard(city, {isLoading: true,city});
-        console.log(cardLoading);
-        const cardsContainer = document.getElementById(favoriteCitiesContainerId);
-        cardsContainer.appendChild(cardLoading);
 
         const weather = await requestWeatherForCity(city);
         const cardData = weatherToCardController(weather);
         const card = createCityCard(city,cardData);
         cardsContainer.removeChild(cardLoading);
-        cardsContainer.appendChild(card);
 
         if(onPosition){
             cardsContainer.insertBefore(card, cardsContainer.children[onPosition]);
         }else{
             cardsContainer.appendChild(card);
         }
-
-        console.log(cardData);
     }catch (e){
         console.log(e);
+        deleteCityFromStorage(city);
+        alert('Произошла ошибка при добавлении города.');
+        cardsContainer.removeChild(cardLoading);
     }
 }
 
@@ -77,7 +82,6 @@ export function syncCardsFromStorage(){
     console.log(nodes);
     // Delete necessary
     nodes.forEach((node) => {
-        console.log(node);
         if(node.id){
             const cityName = `${node.id}`.replace('city-card-','');
             if(!cities.includes(cityName)){
@@ -89,7 +93,6 @@ export function syncCardsFromStorage(){
     //Add new
     cities.forEach((city,index) => {
         const card = document.getElementById(`city-card-${city}`);
-        console.log(card);
         if(!card){
             addCityCard(city, index);
         }
@@ -97,6 +100,5 @@ export function syncCardsFromStorage(){
 }
 
 export function storageChangesListener(){
-    console.log('storage event');
     syncCardsFromStorage();
 }

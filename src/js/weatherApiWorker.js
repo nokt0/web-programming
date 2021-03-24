@@ -17,7 +17,10 @@ function getCurrentLocation() {
 
 function requestWeather(latitude, longitude) {
     return fetch(`${API_URL}&lat=${latitude}&lon=${longitude}`)
-        .then(response => response.json());
+        .then(response => response.json())
+        .catch((e)=>{
+            console.log(e);
+            alert(`Ошибка во время выполнения запроса ${e}`)});
 }
 
 export async function requestWeatherForCurrentLocation(){
@@ -34,5 +37,8 @@ export async function requestWeatherForCurrentLocation(){
 
 export async function requestWeatherForCity(city){
     return fetch(`${API_URL}&q=${city}`)
-        .then(response => response.json());
+        .then(response => response.json())
+        .catch((e)=>{
+            console.log(e);
+            alert(`Ошибка во время выполнения запроса ${e}`)});
 }
