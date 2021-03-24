@@ -1,45 +1,64 @@
 @import "src/assets/scss/utils/vars";
 
 .add-city{
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 100%;
 
-  @media screen and (max-width: $tableWidth) {
-    grid-template-columns: 1fr;
-    grid-row-gap: 10px;
+  @media screen and (max-width: $smTableWidth) {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
   }
 
   &__header{
-    grid-column: 1 / 1;
     font-size: 1.5rem;
     font-family: $secondary-font;
     color: $secondary-font-color;
   }
 
   &__input{
-    grid-column: 3 / 3 ;
     display: flex;
     justify-content: flex-end;
+    flex-wrap: nowrap;
 
     @media screen and (max-width: $tableWidth) {
-      grid-column: 1 / 1;
+      width: 100%;
     }
 
-    input {
-      background: #DCDFE6;
-      padding: 10px;
-      width: 200px;
-      height: 40px;
-      margin-right: 10px;
-      flex-grow: 2;
+    @media screen and (max-width: $smTableWidth) {
+      justify-content: start;
     }
-    input::placeholder{
-      font-size: 0.9rem;
+
+    form{
+      display: flex;
+      justify-content: flex-end;
+      width: 300px;
+
+      @media screen and (max-width: $tableWidth) {
+        width: 350px;
+      }
+
+      @media screen and (max-width: $smTableWidth) {
+        width: 100%;
+      }
+
+      input {
+        background: #DCDFE6;
+        padding: 10px;
+        width: 200px;
+        height: 40px;
+        margin-right: 10px;
+        flex-grow: 2;
+      }
+      input::placeholder{
+        font-size: 0.9rem;
+      }
+      button{
+        font-size: 1.5rem;
+      }
     }
-    button{
-      font-size: 1.5rem;
-    }
+
+
   }
 }

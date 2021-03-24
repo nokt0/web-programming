@@ -2,19 +2,29 @@
 @import "src/assets/scss/utils/mixins";
 
 .city-card-header{
-  display: grid;
-  grid-template-areas: "header header degree icon . close";
-  grid-column-gap: 10px;
-  grid-template-columns: repeat(6,minmax(20px, 1fr));
+  display: flex;
+  justify-content: space-between;
 
-  @media screen and (max-width: $phoneWidth){
-    grid-template-areas: "header header degree icon close close";
+  &__first-part{
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+
+    & > * {
+      margin-right: 10px;
+    }
+  }
+
+  &__second-part{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+
   }
 
   &__header{
+    text-overflow: ellipsis;
     display: flex;
-    align-items: center;
-    grid-area: header;
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -22,24 +32,20 @@
   &__degree{
     display: flex;
     justify-content: center;
-    align-items: center;
-    grid-area: degree;
     font-size: 1.5rem;
   }
 
   &__icon{
-    grid-area: icon;
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-shrink: 0;
     @include size(40px);
 
   }
 
   &__close{
-    grid-area: close;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+
   }
 }

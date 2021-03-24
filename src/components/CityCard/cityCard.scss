@@ -3,6 +3,7 @@
           "city-card-header"
           "city-card-data";
   grid-template-rows: 20% 1fr;
+  align-self: end;
 
   &__header{
     grid-area: city-card-header;

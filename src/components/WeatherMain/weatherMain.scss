@@ -8,9 +8,9 @@
               "city city"
               "icon degree";
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 40% 1fr;
   transition-duration: 1s;
   transition-timing-function: linear;
+  grid-row-gap: 10px;
 
   &__city {
     grid-area: city;
@@ -23,8 +23,8 @@
 
   &__icon {
     grid-area: icon;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 
     @media screen and (max-width: $smDesktopWidth) {
       align-items: center;
