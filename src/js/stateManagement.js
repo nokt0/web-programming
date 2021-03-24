@@ -56,7 +56,6 @@ export async function addCityCard(city, onPosition){
     cardsContainer.appendChild(cardLoading);
 
     try{
-
         const weather = await requestWeatherForCity(city);
         const cardData = weatherToCardController(weather);
         const card = createCityCard(city,cardData);
