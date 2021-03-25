@@ -66,6 +66,7 @@ export async function addCityCard(city, onPosition){
         }else{
             cardsContainer.appendChild(card);
         }
+        return cardsContainer;
     }catch (e){
         console.log(e);
         deleteCityFromStorage(city);
@@ -89,13 +90,18 @@ export function syncCardsFromStorage(){
         }
     })
 
+    const cityPromises = [];
+
     //Add new
     cities.forEach((city,index) => {
         const card = document.getElementById(`city-card-${city}`);
         if(!card){
-            addCityCard(city, index);
+            cityPromises.push(addCityCard(city, index));
         }
     })
+
+    Promise.all(cityPromises).catch((e)=> alert(`Не удалось загрузить все города ${e}`));
+
 }
 
 export function storageChangesListener(){
