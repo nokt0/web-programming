@@ -1,0 +1,13 @@
+@import '../../../assets/scss/utils/vars';
+
+.login{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  &-button{
+    width: 100px;
+    height: 40px;
+    background: $neutral-placeholder;
+    border-radius: 5px;
+  }
+}
