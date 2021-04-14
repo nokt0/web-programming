@@ -1,4 +1,4 @@
-export const isEmpty = (value: any): boolean => {
+export function isEmpty(value: any): boolean {
   if (value === null) {
     return true;
   } else if (typeof value !== 'number' && value === '') {
@@ -6,4 +6,4 @@ export const isEmpty = (value: any): boolean => {
   } else if (value === 'undefined' || value === undefined) {
     return true;
   } else return value !== null && typeof value === 'object' && !Object.keys(value).length;
-};
+}
