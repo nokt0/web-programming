@@ -1,5 +1,4 @@
-const API_KEY = 'b332962152d1ba0bb3f785794f1dc02d';
-const API_URL = `http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&appid=${API_KEY}`;
+
 
 let geolocation = navigator.geolocation;
 
@@ -16,7 +15,7 @@ function getCurrentLocation() {
 }
 
 function requestWeather(latitude, longitude) {
-    return fetch(`${API_URL}&lat=${latitude}&lon=${longitude}`)
+    return fetch(`${process.env.API_URL}/coordinates?lat=${latitude}&lon=${longitude}`)
         .then(response => response.json())
         .catch((e)=>{
             console.log(e);
@@ -24,7 +23,8 @@ function requestWeather(latitude, longitude) {
 }
 
 export async function requestWeatherForCity(city){
-    return fetch(`${API_URL}&q=${city}`)
+
+    return fetch(`${process.env.API_URL}/city?name=${decodeURI(city)}`)
         .then(response => response.json())
         .catch((e)=>{
             console.log(e);

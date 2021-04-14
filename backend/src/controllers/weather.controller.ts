@@ -18,7 +18,7 @@ class WeatherController {
   };
 
   public weatherByCoordinates= async (req: Request, res: Response, next: NextFunction) => {
-    const coordinatesData: CreateCoordinatesDto = req.body;
+    const coordinatesData = req.query as unknown as CreateCoordinatesDto;
 
     try {
       const weather: WeatherApiResponse = await this.weatherService.requestByCoordinates(coordinatesData);

@@ -14,7 +14,7 @@ class WeatherRoutes implements Route {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}/city`, validationMiddleware(CreateCityDto, 'query'), this.weatherController.weatherByCity);
+    this.router.get(`${this.path}/city`,  validationMiddleware(CreateCityDto, 'query'), this.weatherController.weatherByCity);
     this.router.get(`${this.path}/coordinates`, validationMiddleware(CreateCoordinatesDto, 'query'), this.weatherController.weatherByCoordinates);
   }
 }

@@ -7,8 +7,8 @@ export class CreateCityDto {
 
 export class CreateCoordinatesDto {
   @IsString()
-  public lon: number;
+  public lon: string;
 
   @IsString()
-  public lat: number;
+  public lat: string;
 }

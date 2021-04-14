@@ -7,6 +7,7 @@ class WeatherService {
   public weatherApiUrl = `${process.env.API_URL}&appid=${process.env.WEATHER_API_KEY}`;
 
   async requestByCoordinates({lat, lon}: CreateCoordinatesDto) : Promise<WeatherApiResponse> {
+    console.log(`${this.weatherApiUrl}&lat=${lat}&lon=${lon}`);
     return fetch(`${this.weatherApiUrl}&lat=${lat}&lon=${lon}`)
       .then(response => response.json())
       .catch((e) => {
@@ -16,7 +17,8 @@ class WeatherService {
   }
 
   async requestWeatherByCity({name}: CreateCityDto) : Promise<WeatherApiResponse> {
-    return fetch(`${this.weatherApiUrl}&q=${name}`)
+    console.log(name);
+    return fetch(`${this.weatherApiUrl}&q=${encodeURIComponent(name)}`)
       .then(response => response.json())
       .catch((e) => {
         console.log(e);
