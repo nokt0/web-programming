@@ -5,9 +5,17 @@ export class CreateCityIdDto{
   public apiId: string;
 }
 
-export class CreateCityDto extends CreateCityIdDto {
+export class CreateCityNameDto{
   @IsString()
   public name: string;
+}
+
+export class CreateCityDto  {
+  @IsString()
+  public name: string;
+
+  @IsString()
+  public apiId: string;
 }
 
 export class CreateCoordinatesDto {

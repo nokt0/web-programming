@@ -1,6 +1,6 @@
 import HttpException from '../exceptions/HttpException';
 import {WeatherApiResponse} from "../interfaces/apiResponses.interface";
-import {CreateCityDto, CreateCoordinatesDto} from "../dtos/weather.dto";
+import {CreateCityNameDto, CreateCoordinatesDto} from "../dtos/weather.dto";
 import fetch from 'node-fetch';
 
 class WeatherService {
@@ -16,7 +16,7 @@ class WeatherService {
       });
   }
 
-  async requestWeatherByCity({name}: CreateCityDto) : Promise<WeatherApiResponse> {
+  async requestWeatherByCity({name}: CreateCityNameDto) : Promise<WeatherApiResponse> {
     console.log(name);
     return fetch(`${this.weatherApiUrl}&q=${encodeURIComponent(name)}`)
       .then(response => response.json())

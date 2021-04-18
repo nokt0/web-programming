@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response } from 'express';
 import WeatherService from "../services/weather.service";
-import {CreateCityDto, CreateCoordinatesDto} from "../dtos/weather.dto";
+import { CreateCityNameDto, CreateCoordinatesDto} from "../dtos/weather.dto";
 import {WeatherApiResponse} from "../interfaces/apiResponses.interface";
 
 class WeatherController {
   public weatherService = new WeatherService();
 
   public weatherByCity = async (req: Request, res: Response, next: NextFunction) => {
-    const cityData: CreateCityDto = {name: req.query.name as string} ;
+    const cityData: CreateCityNameDto = {name: req.query.name as string} ;
 
     try {
       const weather: WeatherApiResponse = await this.weatherService.requestWeatherByCity(cityData);
