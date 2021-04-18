@@ -7,11 +7,11 @@ const citySchema: Schema = new Schema({
     required: true,
     unique: false,
   },
-  apiId: {
-    type: String,
-    required: true,
-    unique: true
-  },
+    apiId: {
+      type: String,
+      required: true,
+      unique: true
+    },
 });
 
 const cityModel = model<City & Document>('City', citySchema);

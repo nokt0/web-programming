@@ -17,7 +17,7 @@ class WeatherController {
     }
   };
 
-  public weatherByCoordinates= async (req: Request, res: Response, next: NextFunction) => {
+  public weatherByCoordinates = async (req: Request, res: Response, next: NextFunction) => {
     const coordinatesData = req.query as unknown as CreateCoordinatesDto;
 
     try {
@@ -27,7 +27,6 @@ class WeatherController {
       next(error);
     }
   };
-
 
 }
 

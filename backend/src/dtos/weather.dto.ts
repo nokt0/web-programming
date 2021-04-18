@@ -1,6 +1,11 @@
 import { IsString } from 'class-validator';
 
-export class CreateCityDto {
+export class CreateCityIdDto{
+  @IsString()
+  public apiId: string;
+}
+
+export class CreateCityDto extends CreateCityIdDto {
   @IsString()
   public name: string;
 }
