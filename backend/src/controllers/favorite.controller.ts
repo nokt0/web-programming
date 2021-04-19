@@ -1,11 +1,15 @@
 import {NextFunction, Request, Response} from 'express';
 import FavoriteService from "../services/favorite.service";
 import {City} from "../interfaces/city.interface";
-import {CreateCityDto, CreateCityIdDto} from "../dtos/weather.dto";
+import {CreateCityDto, CreateCityIdDto, CreateCityNameDto} from "../dtos/weather.dto";
+import WeatherService from "../services/weather.service";
+import {WeatherApiResponse} from "../interfaces/apiResponses.interface";
+import HttpException from "../exceptions/HttpException";
 
 
 class FavoriteController {
     public favoriteService = new FavoriteService();
+    public weatherService = new WeatherService();
 
     public getFavoriteCities = async (req: Request, res: Response, next: NextFunction) => {
         try {
@@ -28,13 +32,31 @@ class FavoriteController {
     };
 
     public addCity = async (req: Request, res: Response, next: NextFunction) => {
-        const cityDto: CreateCityDto = req.body;
+        const cityNameDto: CreateCityNameDto = req.body;
+        let weatherForCity: WeatherApiResponse;
 
-        console.log(cityDto);
+        // Check city exists
+        try {
+            weatherForCity = await this.weatherService.requestWeatherByCity(cityNameDto);
+        } catch (error) {
+            next(error)
+        }
+
+        const cityDto: CreateCityDto = {name: weatherForCity?.name, cityId: weatherForCity?.id.toString()}
 
         try {
-            const createUserData: City = await this.favoriteService.addToFavorites(cityDto);
-            res.status(201).json({data: createUserData, message: 'created'});
+            const foundCity = await this.favoriteService.findCityById(cityDto as CreateCityIdDto);
+            console.log(foundCity);
+            if(foundCity){
+                next(new HttpException(409,`City ${cityNameDto?.name} already exists`));
+            }
+        }catch (error){
+            next(error)
+        }
+
+        try {
+            await this.favoriteService.addToFavorites(cityDto);
+            res.status(201).json({data: weatherForCity, message: 'added'});
         } catch (error) {
             next(error);
         }

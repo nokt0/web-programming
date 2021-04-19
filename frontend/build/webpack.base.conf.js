@@ -145,7 +145,8 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       "process.env.API_KEY": JSON.stringify("b332962152d1ba0bb3f785794f1dc02d"),
-      "process.env.API_URL": JSON.stringify('http://localhost:3000/weather'),
+      "process.env.API_URL": JSON.stringify('http://localhost:3000'),
+      "process.env.FAVORITES_FROM_BACKEND": JSON.stringify(true),
     }),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[contenthash].css`

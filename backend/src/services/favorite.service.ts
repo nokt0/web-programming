@@ -32,10 +32,7 @@ class FavoriteService {
     }
 
     public async findCityById(cityIdDto: CreateCityIdDto): Promise<City> {
-        const foundCity: City = await this.favoriteCities.findOne(cityIdDto);
-        if (!foundCity) throw new HttpException(409, "You're not user");
-
-        return foundCity;
+        return await this.favoriteCities.findOne(cityIdDto);
     }
 
 }

@@ -7,7 +7,7 @@ const citySchema: Schema = new Schema({
     required: true,
     unique: false,
   },
-    apiId: {
+    cityId: {
       type: String,
       required: true,
       unique: true

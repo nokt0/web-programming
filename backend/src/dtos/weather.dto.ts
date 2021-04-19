@@ -2,7 +2,7 @@ import { IsString } from 'class-validator';
 
 export class CreateCityIdDto{
   @IsString()
-  public apiId: string;
+  public cityId: string;
 }
 
 export class CreateCityNameDto{
@@ -15,7 +15,7 @@ export class CreateCityDto  {
   public name: string;
 
   @IsString()
-  public apiId: string;
+  public cityId: string;
 }
 
 export class CreateCoordinatesDto {

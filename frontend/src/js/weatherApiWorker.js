@@ -15,7 +15,7 @@ function getCurrentLocation() {
 }
 
 function requestWeather(latitude, longitude) {
-    return fetch(`${process.env.API_URL}/coordinates?lat=${latitude}&lon=${longitude}`)
+    return fetch(`${process.env.API_URL}/weather/coordinates?lat=${latitude}&lon=${longitude}`)
         .then(response => response.json())
         .catch((e)=>{
             console.log(e);
@@ -24,7 +24,7 @@ function requestWeather(latitude, longitude) {
 
 export async function requestWeatherForCity(city){
 
-    return fetch(`${process.env.API_URL}/city?name=${decodeURI(city)}`)
+    return fetch(`${process.env.API_URL}/weather/city?name=${decodeURI(city)}`)
         .then(response => response.json())
         .catch((e)=>{
             console.log(e);
