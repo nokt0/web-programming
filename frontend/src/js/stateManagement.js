@@ -5,7 +5,7 @@ import {WeatherTypes} from "../components/WeatherIcon/WeatherIcon.model";
 import {createCityCard} from "../components/CityCard";
 import {favoriteCitiesContainerId} from "../containers/FavoriteCities";
 import {addCityToStorage, getCitiesState} from "./LocalStorage";
-import {postFavoriteCity} from "./favoriteCities";
+import {postFavoriteCity} from "./favoritesApiWorker";
 
 const waitingString = 'Подождите, данные загружаются';
 

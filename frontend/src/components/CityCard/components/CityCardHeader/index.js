@@ -3,6 +3,7 @@ import CityCardHeader from './cityCardHeader.html';
 import {createRoundButton} from "../../../RoundButton";
 import {createWeatherIcon} from "../../../WeatherIcon";
 import {deleteCityFromStorage} from "../../../../js/LocalStorage";
+import {deleteFavoriteCity} from "../../../../js/favoritesApiWorker";
 
 const cityCardHeaderId = 'city-card-header';
 const cityCardHeaderCityId = `${cityCardHeaderId}-city`;
@@ -27,7 +28,10 @@ export function createCityCardHeader(id, {weatherType, city, degree}) {
     const deleteButton = createRoundButton(buttonText);
     const cityName = `${id}`.replace('city-card-','');
     if(cityName){
-        deleteButton.onclick = () => deleteCityFromStorage(cityName);
+        deleteButton.onclick = async () => {
+            await deleteFavoriteCity(cityName);
+            deleteCityFromStorage(cityName);
+        };
     }
     cityCardHeaderClose.appendChild(deleteButton);
 

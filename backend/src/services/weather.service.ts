@@ -17,7 +17,6 @@ class WeatherService {
   }
 
   async requestWeatherByCity({name}: CreateCityNameDto) : Promise<WeatherApiResponse> {
-    console.log(name);
     return fetch(`${this.weatherApiUrl}&q=${encodeURIComponent(name)}`)
       .then(response => response.json())
       .catch((e) => {

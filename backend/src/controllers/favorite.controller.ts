@@ -46,7 +46,6 @@ class FavoriteController {
 
         try {
             const foundCity = await this.favoriteService.findCityById(cityDto as CreateCityIdDto);
-            console.log(foundCity);
             if(foundCity){
                 next(new HttpException(409,`City ${cityNameDto?.name} already exists`));
             }
@@ -63,12 +62,11 @@ class FavoriteController {
     };
 
     public deleteCity = async (req: Request, res: Response, next: NextFunction) => {
-        const cityIdDto: CreateCityIdDto = req.params as unknown as CreateCityIdDto;
-        console.log(req.params)
+        const cityNameDto: CreateCityNameDto = req.body as unknown as CreateCityNameDto;
 
         try {
-            const deleteUserData: City = await this.favoriteService.deleteFromFavorites(cityIdDto);
-            res.status(200).json({data: deleteUserData, message: 'deleted'});
+            const deletedCity: City = await this.favoriteService.deleteFromFavorites(cityNameDto);
+            res.status(200).json({data: deletedCity, message: 'deleted'});
         } catch (error) {
             next(error);
         }

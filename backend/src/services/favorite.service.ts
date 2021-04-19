@@ -1,5 +1,5 @@
 import HttpException from '../exceptions/HttpException';
-import {CreateCityDto, CreateCityIdDto} from "../dtos/weather.dto";
+import {CreateCityDto, CreateCityIdDto, CreateCityNameDto} from "../dtos/weather.dto";
 import cityModel from "../models/cities.model";
 import {City} from "../interfaces/city.interface";
 import {isEmpty} from "../utils/util";
@@ -17,9 +17,9 @@ class FavoriteService {
         return await this.favoriteCities.create({...cityData});
     }
 
-    async deleteFromFavorites(cityIdDto: CreateCityIdDto) : Promise<City> {
-        if(!cityIdDto) throw new HttpException(400, "You're not city name");
-        const deleteCityByName: City = await this.favoriteCities.findOneAndDelete(cityIdDto);
+    async deleteFromFavorites(cityNameDto: CreateCityNameDto) : Promise<City> {
+        if(!cityNameDto) throw new HttpException(400, "You're not city name");
+        const deleteCityByName: City = await this.favoriteCities.findOneAndDelete(cityNameDto);
 
         if (!deleteCityByName) throw new HttpException(409, "There is no city in the favorites");
 

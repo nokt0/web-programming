@@ -3,7 +3,7 @@ import {FavoriteCities, initializeFavoriteCities} from '../containers/FavoriteCi
 import {App, headerRoot, bodyRoot} from '../containers/App';
 import '../components/HeaderMenu/headerMenu.scss'
 import {storageChangesListener, syncCardsFromStorage, updateCurrentGeolocationWeather} from "./stateManagement";
-import {getFavoriteCities} from "./favoriteCities";
+import {getFavoriteCities} from "./favoritesApiWorker";
 import {addAllCities, cleanCitiesState} from "./LocalStorage";
 
 const defaultCity = 'Санкт-Петербург';

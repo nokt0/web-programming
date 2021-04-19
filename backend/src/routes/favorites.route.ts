@@ -17,7 +17,7 @@ class FavoriteRoutes implements Route {
   private initializeRoutes() {
     this.router.get(`${this.path}`,  this.favoriteCitiesController.getFavoriteCities);
     this.router.get(`${this.path}/:cityId`, validationMiddleware(CreateCityIdDto, "params"), this.favoriteCitiesController.getCityById);
-    this.router.delete(`${this.path}/:cityId`, validationMiddleware(CreateCityIdDto, "params"), this.favoriteCitiesController.deleteCity);
+    this.router.delete(`${this.path}`, validationMiddleware(CreateCityNameDto, "body"), this.favoriteCitiesController.deleteCity);
     this.router.post(`${this.path}`, validationMiddleware(CreateCityNameDto, "body"), this.favoriteCitiesController.addCity);
   }
 }
