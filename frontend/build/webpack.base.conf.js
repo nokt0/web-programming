@@ -6,6 +6,7 @@ const fs = require('fs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require("webpack");
 require("@babel/core").transform("code", {
   plugins: ["@babel/plugin-proposal-export-default-from"]
 });
@@ -142,6 +143,13 @@ module.exports = {
     }
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env':{
+        'API_URL': JSON.stringify('https://weather-app-222.herokuapp.com'),
+        'API_KEY': JSON.stringify('b332962152d1ba0bb3f785794f1dc02d'),
+        'FAVORITES_FROM_BACKEND': JSON.stringify(true),
+      }
+    }),
     new MiniCssExtractPlugin({
       filename: `${PATHS.assets}css/[name].[contenthash].css`
     }),
