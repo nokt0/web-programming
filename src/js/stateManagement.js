@@ -92,13 +92,17 @@ export function syncCardsFromStorage() {
         }
     })
 
+    const citiesPromises = [];
     //Add new
     cities.forEach((city) => {
         const card = document.getElementById(`city-card-${city}`);
         if (!card) {
-            requestWeatherForCity(city).then((json) => json && addCityCard(json));
+            citiesPromises.push(requestWeatherForCity(city));
         }
     })
+
+    Promise.all(citiesPromises).then((jsons) => jsons?.forEach((json) => json && addCityCard(json)));
+
 }
 
 export function storageChangesListener() {
