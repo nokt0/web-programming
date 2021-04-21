@@ -16,12 +16,18 @@ export async function submitCityForm(event) {
     if (inputCity) {
         try {
             const postedCity = await postFavoriteCity(inputCity);
+            if(postedCity?.message === 'city not found'){
+                throw new Error('Город с таким названием не найден');
+            }
+            if(postedCity?.message?.includes('already exists')){
+                throw new Error('Город уже добавлен');
+            }
             if (postedCity?.data) {
                 await addCityCard(postedCity);
                 addCityToStorage(postedCity.data?.name);
             }
         } catch (e) {
-            alert('Город уже добавлен в избранное');
+            alert(e.message || 'Город уже добавлен в избранное');
         }
     }
     event?.target?.reset();
