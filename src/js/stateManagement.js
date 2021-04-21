@@ -36,36 +36,44 @@ export async function updateCurrentGeolocationWeather(defaultCity){
     }
 }
 
-export function submitCityForm(event) {
+export async function submitCityForm(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const inputCity = formData.get('city');
-    if(inputCity){
-        try{
-            addCityToStorage(inputCity);
-        }catch (e){
-            alert('Город уже добавлен в избранное');
+    if (inputCity) {
+        try {
+            const requestedCity = await requestWeatherForCity(inputCity);
+            if (requestedCity?.message === 'city not found') {
+                throw new Error('Город с таким названием не найден');
+            }
+            const currentCities = getCitiesState();
+            if(!requestedCity?.name){
+                throw new Error('Не удалось получить данные с api');
+            }
+            if(currentCities.includes(requestedCity?.name)){
+                throw new Error('Город уже добавлен в избранное');
+            }
+            addCityToStorage(requestedCity.name);
+        } catch (e) {
+            alert(e.message || 'Город уже добавлен в избранное');
         }
     }
     event?.target?.reset();
 }
 
-export async function addCityCard(city, onPosition){
+
+export async function addCityCard(weather){
     const cardsContainer = document.getElementById(favoriteCitiesContainerId);
+    const cardData = weatherToCardController(weather);
+    const {city} = cardData;
     const cardLoading = createCityCard(city, {isLoading: true,city});
     cardsContainer.appendChild(cardLoading);
 
     try{
-        const weather = await requestWeatherForCity(city);
-        const cardData = weatherToCardController(weather);
-        const card = createCityCard(city,cardData);
+        const card = createCityCard(cardData.city,cardData);
         cardsContainer.removeChild(cardLoading);
+        cardsContainer.appendChild(card);
 
-        if(onPosition){
-            cardsContainer.insertBefore(card, cardsContainer.children[onPosition]);
-        }else{
-            cardsContainer.appendChild(card);
-        }
         return cardsContainer;
     }catch (e){
         console.log(e);
@@ -79,7 +87,6 @@ export function syncCardsFromStorage(){
     const cities = getCitiesState();
     const cardsContainer = document.getElementById(favoriteCitiesContainerId);
     const nodes = cardsContainer.childNodes;
-    console.log(nodes);
     // Delete necessary
     nodes.forEach((node) => {
         if(node.id){
@@ -93,14 +100,19 @@ export function syncCardsFromStorage(){
     const cityPromises = [];
 
     //Add new
-    cities.forEach((city,index) => {
+    cities.forEach((city) => {
         const card = document.getElementById(`city-card-${city}`);
         if(!card){
-            cityPromises.push(addCityCard(city, index));
+            cityPromises.push(requestWeatherForCity(city));
         }
     })
 
-    Promise.all(cityPromises).catch((e)=> alert(`Не удалось загрузить все города ${e}`));
+    Promise.all(cityPromises)
+        .then((citiesWeather)=>{
+            citiesWeather.forEach((weather) => addCityCard(weather))
+            return citiesWeather;
+        })
+        .catch((e)=> alert(`Не удалось загрузить все города ${e}`));
 
 }
 
