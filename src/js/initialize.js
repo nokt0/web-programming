@@ -16,7 +16,7 @@ window.onload = async function () {
 
     updateCurrentGeolocationWeather(defaultCity);
     initializeFavoriteCities();
-    if (process.env.FAVORITES_FROM_BACKEND) {
+    if (process.env.FAVORITES_FROM_BACKEND || secrets.FAVORITES_FROM_BACKEND) {
         cleanCitiesState();
         const favoriteCities = await getFavoriteCities();
         const cities = favoriteCities?.data?.map((item) => item?.name);

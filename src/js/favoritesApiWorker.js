@@ -1,9 +1,9 @@
 export function getFavoriteCities() {
-    return fetch(`${process.env.API_URL}/favorite`).then((response) => response.json());
+    return fetch(`${process.env.API_URL || secrets.API_URL}/favorite`).then((response) => response.json());
 }
 
 export function postFavoriteCity(cityName) {
-    return fetch(`${process.env.API_URL}/favorite`, {
+    return fetch(`${process.env.API_URL || secrets.API_URL}/favorite`, {
         method: 'POST',
         body: JSON.stringify({name: cityName}),
         headers: {
@@ -14,7 +14,7 @@ export function postFavoriteCity(cityName) {
 }
 
 export function deleteFavoriteCity(cityName) {
-    return fetch(`${process.env.API_URL}/favorite`, {
+    return fetch(`${process.env.API_URL || secrets.API_URL}/favorite`, {
         method: 'DELETE',
         body: JSON.stringify({name: cityName}),
         headers: {
